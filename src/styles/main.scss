@@ -1,7 +1,131 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+:root {
+  --smallCircle: 50px;
+  --bigCircle: 365px;
+  --roundSize: 425px;
+  --mainColor: #4f6f18;
+}
 
-body {
-  background: $c-gray;
+* {
+  box-sizing: border-box;
+}
+
+.gif {
+  width: 700px;
+  height: 700px;
+  margin: 0 auto;
+
+  position: relative;
+
+  & > * {
+    opacity: 0;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+  }
+}
+
+.circle {
+
+  &-small {
+    width: var(--smallCircle);
+    height: var(--smallCircle);
+
+    position: absolute;
+    left: calc(50% - var(--smallCircle) / 2);
+    top: calc(50% - var(--smallCircle) / 2);
+    background-color: var(--mainColor);
+    border-radius: 50%;
+    z-index: 0;
+
+    opacity: 1;
+
+    animation-name: circle-small-appearance;
+    animation-timing-function: steps(1);
+  }
+
+  &-big {
+    width: var(--bigCircle);
+    height: var(--bigCircle);
+
+    position: absolute;
+    left: calc(50% - var(--bigCircle) / 2);
+    top: calc(50% - var(--bigCircle) / 2);
+    background-color: var(--mainColor);
+    border-radius: 50%;
+    z-index: 1;
+
+    animation-name: circle-big-appearance;
+  }
+}
+
+.round {
+  width: var(--roundSize);
+  height: var(--roundSize);
+
+  position: absolute;
+  left: calc(50% - var(--roundSize) / 2);
+  top: calc(50% - var(--roundSize) / 2);
+
+  background-color: #fff;
+  border: 32px solid var(--mainColor);
+  border-radius: 50%;
+  z-index: 2;
+
+  animation-name: round-appearance;
+}
+
+.lbk-full {
+  position: relative;
+  z-index: 3;
+
+  animation-name: full-appearance;
+}
+
+@keyframes circle-small-appearance {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes circle-big-appearance {
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes round-appearance {
+  50% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes full-appearance {
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
